@@ -5,7 +5,7 @@ function GetBigAtmCash(Folder)
     local Atms=game:GetService("Workspace").Map.ATM:GetChildren()
     while true do
         
-        task.wait()
+        game:GetService("RunService").RenderStepped:Wait()
         if Folder then
             
             if Folder:FindFirstChild("Robux") then
@@ -23,7 +23,7 @@ end
 function GetSmallAtmCash(Folder)
     local Atms=game:GetService("Workspace").Map.ATM:GetChildren()
     while true do
-        task.wait()
+        game:GetService("RunService").RenderStepped:Wait()
             if Folder:FindFirstChild("Robux") then
                 local c=Folder:FindFirstChild("Robux")
                 c.CFrame=plr.Character.HumanoidRootPart.CFrame
