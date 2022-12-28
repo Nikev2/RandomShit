@@ -24,7 +24,7 @@ local Casino=game:GetService("Workspace").Map.Casino
 function GetAllCash(SlotCash)
     local Main=SlotCash.Parent
     while true do 
-    task.wait()
+    game:GetService("RunService").RenderStepped:Wait()
     if SlotCash then
         if SlotCash:FindFirstChild("Robux") then
             local robux=SlotCash:FindFirstChild("Robux")
