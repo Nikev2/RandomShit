@@ -18,19 +18,28 @@ function Lib:VWALK(speed)
 
 local walkSpeed=tonumber(speed)
 
-
 local UIS = game:GetService("UserInputService")
 local RS = game:GetService("RunService")
-
-
+local IsChatting=false
+UIS.TextBoxFocused:Connect(function()
+    IsChatting=true
+end)
+UIS.TextBoxFocusReleased:Connect(function()
+    IsChatting=false
+end)
 local W, A, S, D
 local xVelo, yVelo
 
 NoSameConnection(RS.RenderStepped:Connect(function()
+   
    local HRP = game.Players.LocalPlayer.Character.HumanoidRootPart
    local C = game.Workspace.CurrentCamera
    local LV = C.CFrame.LookVector
+   if IsChatting then
+    return
+   end
    for i,v in pairs(UIS:GetKeysPressed()) do
+    
        if v.KeyCode == Enum.KeyCode.W then
             
            W = true
@@ -107,6 +116,7 @@ NoSameConnection(RS.RenderStepped:Connect(function()
 
    xVelo, yVelo, W, A, S, D = nil
 end),"c3")
+
   
   
   
